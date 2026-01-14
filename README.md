@@ -47,6 +47,30 @@ npm start
 
 This runs the main script with the example input and displays the extracted values.
 
+### Testing with Custom Input
+
+You can test the function with your own input strings by passing them as a command-line argument:
+
+```bash
+npm start -- "HeartRate=100bpm; HeartRate=150; HeartRate=error"
+```
+
+**Examples:**
+
+```bash
+# Test with different values
+npm start -- "HeartRate=120; HeartRate=80bpm; HeartRate=95"
+# Output: [120, 80, 95]
+
+# Test with invalid values only
+npm start -- "HeartRate=error; HeartRate=N/A"
+# Output: []
+
+# Test with mixed spacing
+npm start -- "HeartRate = 70 ; HeartRate=  85bpm"
+# Output: [70, 85]
+```
+
 ### Running Tests
 
 ```bash
