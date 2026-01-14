@@ -43,12 +43,21 @@ export function extractHeartRates(logString: string): number[] {
     return results;
 }
 
-// Main execution - demonstrates the function with the provided example
+// Main execution - supports command-line arguments for easy testing
 if (require.main === module) {
-    const testInput = "LOG_01: HeartRate=72bpm; STATUS=OK | LOG_02: HeartRate= 85 ; STATUS=WARN | LOG_03: HeartRate=error; STATUS=FAIL";
+    // Default example input from the task
+    const defaultInput = "LOG_01: HeartRate=72bpm; STATUS=OK | LOG_02: HeartRate= 85 ; STATUS=WARN | LOG_03: HeartRate=error; STATUS=FAIL";
+    
+    // Use command-line argument if provided, otherwise use default
+    const input = process.argv[2] || defaultInput;
     
     console.log("Input string:");
-    console.log(testInput);
+    console.log(input);
     console.log("\nExtracted HeartRate values:");
-    console.log(extractHeartRates(testInput));
+    console.log(extractHeartRates(input));
+    
+    if (!process.argv[2]) {
+        console.log("\nTip: You can test with custom input:");
+        console.log('  npm start -- "HeartRate=100; HeartRate=200bpm"');
+    }
 }
