@@ -1,0 +1,22 @@
+{
+  "name": "heartrate-extractor",
+  "version": "1.0.0",
+  "description": "Extract HeartRate values from medical log strings",
+  "main": "src/heartRateExtractor.ts",
+  "scripts": {
+    "start": "npx ts-node src/heartRateExtractor.ts",
+    "test": "npx ts-node test/heartRateExtractor.test.ts"
+  },
+  "keywords": [
+    "heartrate",
+    "medical",
+    "parser"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "ts-node": "^10.9.0",
+    "@types/node": "^20.10.0"
+  }
+}
