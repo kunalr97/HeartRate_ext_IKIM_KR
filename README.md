@@ -91,6 +91,7 @@ This runs the test suite with multiple test cases covering:
 ├── test/
 │   └── heartRateExtractor.test.ts  # Test suite
 ├── package.json                # Project configuration
+├── package-lock.json           # Locked dependency versions for reproducible builds
 ├── tsconfig.json               # TypeScript configuration
 └── README.md                   # This file
 ```
@@ -106,8 +107,4 @@ const heartRates = extractHeartRates(logData);
 console.log(heartRates); // Output: [72, 85]
 ```
 
-## Technical Decisions
 
-1. **Regular Expression**: Used `/HeartRate\s*=\s*([^;|]+)/gi` to flexibly match HeartRate entries regardless of spacing
-2. **No External Test Framework**: Kept the test runner simple with a custom implementation to minimize dependencies
-3. **TypeScript**: Provides type safety and better IDE support while compiling to standard JavaScript
