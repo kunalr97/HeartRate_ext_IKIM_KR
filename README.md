@@ -1,0 +1,89 @@
+# HeartRate Extractor
+
+A TypeScript function that extracts numeric HeartRate values from medical log strings.
+
+## Problem Statement
+
+**Task:** Write a function that extracts "HeartRate" values as numbers.
+
+**Input String:**
+```
+LOG_01: HeartRate=72bpm; STATUS=OK | LOG_02: HeartRate= 85 ; STATUS=WARN | LOG_03: HeartRate=error; STATUS=FAIL
+```
+
+**Expected Output:** `[72, 85]`
+
+## Solution Approach
+
+The solution uses a regular expression to:
+1. Find all `HeartRate=<value>` patterns in the input string
+2. Extract the value portion after the `=` sign
+3. Parse only valid numeric values (filtering out errors like "error", "N/A", etc.)
+4. Return an array of numbers
+
+### Key Features
+- Handles various formats: `72bpm`, `85`, ` 90 ` (with spaces)
+- Case-insensitive matching (`HeartRate`, `HEARTRATE`, `heartrate`)
+- Gracefully handles invalid/non-numeric values
+- Returns empty array for edge cases (empty input, no matches)
+
+## Quick Start
+
+### Prerequisites
+- Node.js (v16 or higher recommended)
+- npm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the Script
+
+```bash
+npm start
+```
+
+This runs the main script with the example input and displays the extracted values.
+
+### Running Tests
+
+```bash
+npm test
+```
+
+This runs the test suite with multiple test cases covering:
+- The main example from the task
+- Edge cases (empty string, no valid values)
+- Various input formats
+- Case insensitivity
+
+## Project Structure
+
+```
+├── src/
+│   └── heartRateExtractor.ts   # Main extraction function
+├── test/
+│   └── heartRateExtractor.test.ts  # Test suite
+├── package.json                # Project configuration
+├── tsconfig.json               # TypeScript configuration
+└── README.md                   # This file
+```
+
+## Usage Example
+
+```typescript
+import { extractHeartRates } from './src/heartRateExtractor';
+
+const logData = "LOG_01: HeartRate=72bpm; STATUS=OK | LOG_02: HeartRate= 85 ; STATUS=WARN";
+const heartRates = extractHeartRates(logData);
+
+console.log(heartRates); // Output: [72, 85]
+```
+
+## Technical Decisions
+
+1. **Regular Expression**: Used `/HeartRate\s*=\s*([^;|]+)/gi` to flexibly match HeartRate entries regardless of spacing
+2. **No External Test Framework**: Kept the test runner simple with a custom implementation to minimize dependencies
+3. **TypeScript**: Provides type safety and better IDE support while compiling to standard JavaScript
