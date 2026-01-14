@@ -107,4 +107,8 @@ const heartRates = extractHeartRates(logData);
 console.log(heartRates); // Output: [72, 85]
 ```
 
+## Author
 
+**Kunal Runwal**
+
+Coded with AI Assistance: Claude (Anthropic)
